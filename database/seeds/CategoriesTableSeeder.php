@@ -28,9 +28,7 @@ class CategoriesTableSeeder extends Seeder
         // foreach($categories as $name){
 
         //     $category = new Category();
-            
         //     $category->name = $name;
-
         //     $category->save();
         // }
     }
