@@ -75,7 +75,7 @@
         <main class="py-4">
             @yield('content')
         </main>
-        @yield('script-section')
     </div>
+    @yield('script-section')
 </body>
 </html>

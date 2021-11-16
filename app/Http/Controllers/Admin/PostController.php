@@ -101,8 +101,8 @@ class PostController extends Controller
     {
         $data = $request->all();
         $post->delete();
-        
+
         return redirect()->route('admin.posts.index', $post)
-            ->with('alert-message', "$post->title has been deleted");
+            ->with('alert-message', "' $post->title ' has been deleted");
     }
 }

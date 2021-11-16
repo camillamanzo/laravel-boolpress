@@ -52,16 +52,17 @@
 @section('script-section')
 <script>
     // function to ask confirmation before deleting selected item
-    const deleteItems = document.querySelectorAll('.delete-item');
+    let deleteItems = document.querySelectorAll('.delete-item');
     
     // adding event listener to each button in form
     deleteItems.forEach(element => {
        
         // when submit=true the event is blocked by prevent default
         element.addEventListener('submit', function(event){
+
             event.preventDefault(); //blocks standard function (delete)
             const title = element.getAttribute("data-post-title");
-
+             
             // sends a pop up to the window to ask for confirmation
             const confirm = window.confirm(`Are you sure you want to delete ${title}?`);
             
