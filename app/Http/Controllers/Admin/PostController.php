@@ -97,11 +97,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Request $request, Post $post)
     {
+        $data = $request->all();
         $post->delete();
-
-        return redirect()->route('admin.posts.index')
+        
+        return redirect()->route('admin.posts.index', $post)
             ->with('alert-message', "$post->title has been deleted");
     }
 }
