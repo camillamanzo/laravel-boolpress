@@ -12,18 +12,29 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="title">Title</label>
+                    <label for="title">Title:</label>
                     <input class="form-control form-control-lg" type="text" 
                     placeholder="Insert the title of the post" id="title" name="title" value="{{ $post->title }}">
                 </div>
 
                 <div class="form-group">
-                    <label for="author">Author</label>
+                    <label for="post_content">Categories:</label>
+                    <br>
+                    <select name="category_id" id="category_id">
+                        <option value="">None</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Author:</label>
                     <input class="form-control" type="text" placeholder="Insert the author of the post" id="author" name="author" value="{{ $post->author }}" >
                 </div>
 
                 <div class="form-group">
-                    <label for="post_content">Content</label>
+                    <label for="post_content">Content:</label>
                     <textarea  class="form-control" type="textarea" placeholder="Insert the content of your post" id="content" name="content" >{{ $post->content }} </textarea>
                 </div>
 

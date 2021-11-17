@@ -17,6 +17,7 @@
         <table class="table table-bordered">
             <thead>
                 <th class="col">Title</th>
+                <th class="col">Category</th>
                 <th class="col">Author</th>
                 <th class="col">Date</th>
             </thead>
@@ -24,6 +25,7 @@
                 @forelse ($posts as $post)
                     <tr>
                         <td><a href="{{ route('admin.posts.show', $post->id ) }}">{{ $post->title }}</a></td>
+                        <td>@if ($post->category) {{ $post->category->name }} @else none @endif</td>
                         <td>{{ $post->author }}</td>
                         <td>{{ $post->date }}</td>
                         <td><a href="{{ route('admin.posts.edit', $post ) }}" class="btn btn-primary">Edit</a></td>
