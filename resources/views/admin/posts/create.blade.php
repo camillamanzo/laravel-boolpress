@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="post_content">Categories:</label>
+                    <label for="category_id">Categories:</label>
                     <br>
                     <select name="category_id" id="category_id">
                         <option value="">None</option>

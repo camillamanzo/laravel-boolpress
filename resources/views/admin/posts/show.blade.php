@@ -7,7 +7,13 @@
             <h1 class="card-title"> {{$post->title}} </h1>
             <address class="card-subtitle"> Written by {{ $post->author }} </address>
             <address class="card-subtitle date"> {{ $post->date }} </address>
-
+            <div>
+                @if ($post->category)
+                    <span class="badge badge-primary px-2">{{ $post->category->name }}</span>
+                @else
+                    No category chosen
+                @endif
+            </div>
             <p class="card-body"> {{$post->content}}</p>
             <div class="card-footer back-to-list">
                 <a href="{{route('admin.posts.index')}}" class="btn btn-toolbar">Back to the full list.</a>

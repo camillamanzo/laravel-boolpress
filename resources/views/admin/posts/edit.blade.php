@@ -18,6 +18,17 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="category_id">Categories:</label>
+                    <br>
+                    <select name="category_id" id="category_id">
+                        <option value="">None</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="author">Author</label>
                     <input class="form-control" type="text" placeholder="Default input" id="author" name="author" value="{{ $post->author }}" required>
                 </div>
