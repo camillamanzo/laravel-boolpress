@@ -15,9 +15,9 @@
                 @endif
             </div>
             <p class="card-body"> {{$post->content}}</p>
-            <div class="card-footer back-to-list">
-                <a href="{{route('admin.posts.index')}}" class="btn btn-toolbar">Back to the full list.</a>
-            </div>
+            {{-- <div class="card-footer back-to-list"> --}}
+                <a href="{{route('admin.posts.index')}}">Back to the full list.</a>
+            {{-- </div> --}}
             
         </div>
     </div>
