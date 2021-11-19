@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\User;
 
 class PostController extends Controller
 {

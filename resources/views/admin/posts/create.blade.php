@@ -37,10 +37,10 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="author">Author:</label>
                     <input class="form-control" type="text" placeholder="Insert the author of the post" id="author" name="author" value="{{ $post->author }}" >
-                </div>
+                </div> --}}
 
                 <div class="form-group">
                     <label for="content">Content:</label>

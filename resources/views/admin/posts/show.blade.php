@@ -5,7 +5,7 @@
     <div class="container">
         <div class="card p-5">
             <h1 class="card-title"> {{$post->title}} </h1>
-            <address class="card-subtitle"> Written by {{ $post->author }} </address>
+            <address class="card-subtitle"> di {{ $post->user->name }} </address>
             <address class="card-subtitle date"> {{ $post->date }} </address>
             <div>
                 @if ($post->category)

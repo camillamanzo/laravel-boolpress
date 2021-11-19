@@ -18,16 +18,17 @@ class PostTableSeeder extends Seeder
     public function run(Faker $faker)
     {
         $category_ids = Category::pluck('id')->toArray();
+        $user_ids = User::pluck('id')->toArray();
 
         for($i = 0; $i < 50; $i++){
             $newPost = new Post();
 
             $newPost->title = $faker->sentence();
-            $newPost->author = $faker->name();
             $newPost->date = $faker->date();
             $newPost->content = $faker->paragraphs(5, true);
 
             $newPost->category_id = Arr::random($category_ids);
+            $newPost->user_id = Arr::random($user_ids);
 
             $newPost-> save();
         }
