@@ -59,6 +59,7 @@ class PostController extends Controller
 
         $data = $request->all();
         $data['date'] = Carbon::now();
+        $data['user_id'] = Auth::user()->id;
 
         $post = new Post();
         $post->fill($data);
@@ -101,6 +102,7 @@ class PostController extends Controller
     {
         $data = $request->all();
         $data['date'] = Carbon::now();
+        $data['user_id'] = Auth::user()->id;
 
         $post->fill($data);
         $post->update();

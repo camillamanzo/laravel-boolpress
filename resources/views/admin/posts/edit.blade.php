@@ -28,10 +28,10 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="author">Author</label>
                     <input class="form-control" type="text" placeholder="Default input" id="author" name="author" value="{{ $post->author }}" required>
-                </div>
+                </div> --}}
 
                 <div class="form-group">
                     <label for="post_content">Content</label>

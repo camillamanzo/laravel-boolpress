@@ -26,7 +26,7 @@
                     <tr>
                         <td><a href="{{ route('admin.posts.show', $post->id ) }}">{{ $post->title }}</a></td>
                         <td>@if ($post->category) {{ $post->category->name }} @else none @endif</td>
-                        <td>{{ $post->author }}</td>
+                        <td>{{ $post->user->name }}</td>
                         <td>{{ $post->date }}</td>
                         <td><a href="{{ route('admin.posts.edit', $post ) }}" class="btn btn-primary">Edit</a></td>
                         <td>
