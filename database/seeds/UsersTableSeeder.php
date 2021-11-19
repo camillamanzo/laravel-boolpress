@@ -14,14 +14,14 @@ class UsersTableSeeder extends Seeder
     public function run(Faker $faker)
     {
 
-        // saving my avatar
-        // $user = new User();
+        //saving my avatar
+        $user = new User();
 
-        // $user->name = 'camilla';
-        // $user->email = 'mailprova@gmail.com';
-        // $user->password = bcrypt('ciaociao');
+        $user->name = 'camilla';
+        $user->email = 'mailprova@gmail.com';
+        $user->password = bcrypt('ciaociao');
 
-        // $user->save();
+        $user->save();
 
         // creating random users
         for ($i = 0; $i < 10; $i++) {

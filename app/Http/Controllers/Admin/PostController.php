@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+
 use App\Models\Post;
 use App\Models\Category;
 
@@ -42,6 +44,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+
+            'title' => 'required|string|unique:posts|max:120',
+            'content' => 'required|string|min:40',
+            'category_id' => "nullable"
+        ],
+        [
+            "required" => 'You have to correctly file all the parameters.',
+            "title.required" => 'Please insert a title.',
+            'content.min' => 'The content of the post has to be at least 40 letters long.'
+        ]);
+
         $data = $request->all();
         $data['date'] = Carbon::now();
 

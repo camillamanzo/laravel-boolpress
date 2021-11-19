@@ -8,6 +8,15 @@
         </header>
 
         <section id="post-form">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>        
+            @endif
             <form action="{{route('admin.posts.store')}}" method="POST" >
                 @csrf
 
@@ -34,7 +43,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="post_content">Content:</label>
+                    <label for="content">Content:</label>
                     <textarea  class="form-control" type="textarea" placeholder="Insert the content of your post" id="content" name="content" >{{ $post->content }} </textarea>
                 </div>
 
