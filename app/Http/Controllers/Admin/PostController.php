@@ -48,7 +48,8 @@ class PostController extends Controller
 
             'title' => 'required|string|unique:posts|max:120',
             'content' => 'required|string|min:40',
-            'category_id' => "nullable"
+            'category_id' => 'nullable',
+            'author' => 'required'
         ],
         [
             "required" => 'You have to correctly file all the parameters.',

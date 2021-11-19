@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <label for="title">Title:</label>
                     <input class="form-control form-control-lg" type="text" 
-                    placeholder="Insert the title of the post" id="title" name="title" value="{{ $post->title }}">
+                    placeholder="Insert the title of the post" id="title" name="title" value="{{ old('title', $post->title) }}">
                 </div>
 
                 <div class="form-group">
@@ -32,7 +32,7 @@
                     <select name="category_id" id="category_id">
                         <option value="">None</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}">{{ old('category_id', $category->name) }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -44,7 +44,7 @@
 
                 <div class="form-group">
                     <label for="content">Content:</label>
-                    <textarea  class="form-control" type="textarea" placeholder="Insert the content of your post" id="content" name="content" >{{ $post->content }} </textarea>
+                    <textarea  class="form-control" type="textarea" placeholder="Insert the content of your post" id="content" name="content" >{{ old('content', $post->content) }} </textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Create</button>
