@@ -37,10 +37,17 @@
                     </select>
                 </div>
 
-                {{-- <div class="form-group">
-                    <label for="author">Author:</label>
-                    <input class="form-control" type="text" placeholder="Insert the author of the post" id="author" name="author" value="{{ $post->author }}" >
-                </div> --}}
+                <div class="form-group">
+                    <legend class="h5">Tags</legend>
+                    <div class="form-check form-check-inline">
+                        @foreach ($tags as $tag)
+                        <div class="mr-3">
+                            <input type="checkbox" class="form-check-input" id="tag-{{ $tag->id }}" value="{{$tag->id}}" name="tags[]">
+                            <label class="form-check-label" for="tag-{{$tag->id}}">{{$tag->name}}</label>    
+                        </div>    
+                        @endforeach
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="content">Content:</label>

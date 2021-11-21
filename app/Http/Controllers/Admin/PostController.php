@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use App\User;
 
 class PostController extends Controller
@@ -34,7 +35,8 @@ class PostController extends Controller
     {
         $post = new Post();
         $categories = Category::all();
-        return view('admin.posts.create', compact('post', 'categories'));
+        $tags = Tag::all();
+        return view('admin.posts.create', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -65,6 +67,8 @@ class PostController extends Controller
         $post->fill($data);
         $post->save();
 
+        if(array_key_exists('tags', $data)) $post->tags()->sync($data['tags']);
+
         return redirect()->route('admin.posts.show', compact('post'));
     }
 
@@ -88,7 +92,10 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view("admin.posts.edit", compact('post', 'categories'));
+        $tags = Tag::all();
+
+        $tagIds = $post->tags->pluck('id')->toArray();
+        return view("admin.posts.edit", compact('post', 'categories', 'tags', 'tagIds'));
     }
 
     /**
@@ -107,6 +114,8 @@ class PostController extends Controller
         $post->fill($data);
         $post->update();
 
+        if(array_key_exists('tags', $data)) $post->tags()->sync($data['tags']);
+        
         return redirect()->route('admin.posts.show', compact('post'));
 
     }
@@ -119,6 +128,7 @@ class PostController extends Controller
      */
     public function destroy(Request $request, Post $post)
     {
+        if ($post->tags) $post->tags()->detach();
         $data = $request->all();
         $post->delete();
 

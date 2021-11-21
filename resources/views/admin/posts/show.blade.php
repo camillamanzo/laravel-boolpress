@@ -14,6 +14,14 @@
                     No category chosen
                 @endif
             </div>
+            <div>
+                @forelse ($post->tags as $tag)
+                            
+                    <span class="bagde badge-pill" style="background-color: {{ $tag->color}} ">{{$tag->name}}</span>
+                @empty
+                    No Tags
+                @endforelse
+            </div>
             <p class="card-body"> {{$post->content}}</p>
             {{-- <div class="card-footer back-to-list"> --}}
                 <a href="{{route('admin.posts.index')}}">Back to the full list.</a>
