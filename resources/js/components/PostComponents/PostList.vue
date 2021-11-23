@@ -1,14 +1,7 @@
 <template>
     <section>
-
-        <div class="loader" v-if="isLoading">
-            <div class="spinner-border text-info " role="status">
-                <span class="sr-only">Loading...</span>        
-            </div>
-        </div>
-
-        <div v-else>
-            <h3>My Posts:</h3>
+        <h3>My Posts:</h3>
+        <div class="py-4">
             <PostCard v-for="post in posts" :key="post.id" :post="post" />
         </div>
         

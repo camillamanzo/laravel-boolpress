@@ -2013,13 +2013,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostList',
@@ -2634,33 +2627,19 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", [
-    _vm.isLoading
-      ? _c("div", { staticClass: "loader" }, [_vm._m(0)])
-      : _c(
-          "div",
-          [
-            _c("h3", [_vm._v("My Posts:")]),
-            _vm._v(" "),
-            _vm._l(_vm.posts, function (post) {
-              return _c("PostCard", { key: post.id, attrs: { post: post } })
-            }),
-          ],
-          2
-        ),
+    _c("h3", [_vm._v("My Posts:")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "py-4" },
+      _vm._l(_vm.posts, function (post) {
+        return _c("PostCard", { key: post.id, attrs: { post: post } })
+      }),
+      1
+    ),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "spinner-border text-info ", attrs: { role: "status" } },
-      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
