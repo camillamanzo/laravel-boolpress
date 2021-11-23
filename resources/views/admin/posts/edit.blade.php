@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="container">
-        <header>
+    <div class="container mt-3">
+        <header class="pb-3">
             <h1>Edit "{{ $post->title }}"</h1>
         </header>
 
@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <label for="category_id">Categories:</label>
                     <br>
-                    <select name="category_id" id="category_id">
+                    <select class="border-top-0 border-left-0 border-right-0 bg-white px-3 py-1" name="category_id" id="category_id">
                         <option value="">None</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -45,8 +45,11 @@
                     <textarea  class="form-control" type="textarea" placeholder="" id="post_content" name="post_content" required>{{ $post->content }}</textarea>
                 </div>
                 
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="reset" class="btn btn-secondary">Delete</button>
+                <div class="pt-5 d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary px-5">Submit</button>
+                    <button type="reset" class="btn btn-danger px-5">Delete</button>
+                </div>
+                
             </form>
         </section>
     </div>
