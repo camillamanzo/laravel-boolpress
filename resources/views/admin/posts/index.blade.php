@@ -26,16 +26,16 @@
                 @forelse ($posts as $post)
                     <tr>
                         <td><a href="{{ route('admin.posts.show', $post->id ) }}">{{ $post->title }}</a></td>
-                        <td>@if ($post->category) {{ $post->category->name }} @else none @endif</td>
+                        <td>@if ($post->category) {{ ucfirst($post->category->name) }} @else none @endif</td>
                         <td>
                             @forelse ($post->tags as $tag)
                             
-                                <span class="bagde badge-pill" style="background-color: {{ $tag->color}} ">{{$tag->name}}</span>
+                                <span class="bagde badge-pill" style="background-color: {{ $tag->color}}; color: white">{{ ucfirst($tag->name) }}</span>
                             @empty
                                 No Tags
                             @endforelse
                         </td>
-                        <td>{{ $post->user->name }}</td>
+                        <td>{{ ucfirst($post->user->name) }}</td>
                         <td>{{ $post->date }}</td>
                         <td><a href="{{ route('admin.posts.edit', $post ) }}" class="btn btn-primary">Edit</a></td>
                         <td>

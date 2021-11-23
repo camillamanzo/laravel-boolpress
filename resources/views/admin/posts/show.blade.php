@@ -3,30 +3,38 @@
 
 @section('content')
     <div class="container">
-        <div class="card p-5">
-            <h1 class="card-title"> {{$post->title}} </h1>
-            <address class="card-subtitle"> di {{ $post->user->name }} </address>
-            <address class="card-subtitle date"> {{ $post->date }} </address>
-            <div>
-                @if ($post->category)
-                    <span class="badge badge-primary px-2">{{ $post->category->name }}</span>
-                @else
-                    No category chosen
-                @endif
+        <div class="card border-light mt-5">
+            <div class="card-header bg-transparent">
+                <h1> {{$post->title}} </h1>
             </div>
-            <div>
-                @forelse ($post->tags as $tag)
-                            
-                    <span class="bagde badge-pill" style="background-color: {{ $tag->color}} ">{{$tag->name}}</span>
-                @empty
-                    No Tags
-                @endforelse
+            <div class="card-body">
+                <div class="pb-3">
+                    @forelse ($post->tags as $tag)
+                                
+                        <span class="bagde badge-pill" style="background-color: {{ $tag->color}}; color: white ">{{$tag->name}}</span>
+                    @empty
+                        No Tags
+                    @endforelse
+                </div>
+                <div>
+                    @if ($post->category)
+                        <span> Category: {{ Str::upper($post->category->name) }}</span>
+                    @else
+                        No category chosen
+                    @endif
+                </div>
+                <blockquote class="blockquote mb-0">
+                    <p class="card-body"> {{$post->content}}</p>
+                    <footer class="blockquote-footer">
+                         <cite title="Source Title">{{ ucfirst($post->user->name) }}, {{ $post->date }}.</cite>
+                    </footer>
+                </blockquote>
             </div>
-            <p class="card-body"> {{$post->content}}</p>
-            {{-- <div class="card-footer back-to-list"> --}}
-                <a href="{{route('admin.posts.index')}}">Back to the full list.</a>
-            {{-- </div> --}}
-            
         </div>
+
+        <div class="py-5">
+            <a href="{{route('admin.posts.index')}}"><h4>Back to the full list</h4></a>
+        </div>
+        
     </div>
 @endsection

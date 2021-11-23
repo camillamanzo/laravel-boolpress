@@ -14,7 +14,7 @@
 
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" id="title" name="title" value="{{ $post->title }}" required>
+                    <input class="form-control form-control-lg" type="text" id="title" name="title" value="{{ $post->title }}" required>
                 </div>
 
                 <div class="form-group">

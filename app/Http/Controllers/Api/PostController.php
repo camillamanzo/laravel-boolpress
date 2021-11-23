@@ -36,12 +36,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $post = Post::find($id);
-        if ( $post ) return response()->json($post);
-        else return response('', 404);
-    }
+    // public function show($id)
+    // {
+    //     $post = Post::find($id);
+    //     if ( $post ) return response()->json($post);
+    //     else return response('', 404);
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -61,10 +61,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        Post::destroy($id);
+    // public function destroy($id)
+    // {
+    //     Post::destroy($id);
 
-        return response('', 204);
-    }
+    //     return response('', 204);
+    // }
 }

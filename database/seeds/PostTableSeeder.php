@@ -24,7 +24,7 @@ class PostTableSeeder extends Seeder
             $newPost = new Post();
 
             $newPost->title = $faker->sentence();
-            $newPost->date = $faker->date();
+            $newPost->date = $faker->dateTimeBetween('-10 weeks', '+0 week');
             $newPost->content = $faker->paragraphs(5, true);
 
             $newPost->category_id = Arr::random($category_ids);
