@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <Header :title="title" />
+        <Header :title="title"/>
         <main>
             <PostList />
         </main>
@@ -8,15 +8,20 @@
 </template>
 
 <script>
+
     import Header from "./Header.vue";
-    import PostList from "./posts/PostList.vue"
+    import PostList from "./PostComponents/PostList.vue";
 
     export default {
         name: 'App',
         data(){
             return {
-                title : 'Boolpress v2.5',
+                title: 'Boolpress',
             }
         },
+        components: {
+            Header,
+            PostList
+        }
     }
 </script>
