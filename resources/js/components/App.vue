@@ -1,5 +1,7 @@
 <template>
     <div class="container">
+
+        <!-- passing title to header -->
         <Header :title="title"/>
         <main>
             <PostList />

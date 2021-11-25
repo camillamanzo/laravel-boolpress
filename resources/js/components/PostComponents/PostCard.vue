@@ -1,8 +1,10 @@
 <template>
     <div class="card my-4">
+
         <div class="card-header">
             <h4> {{ post.title }} </h4>
         </div>
+
         <div class="card-body">
             <blockquote class="blockquote mb-0">
                 <p class="card-body"> {{ post.content }}</p>
@@ -12,6 +14,7 @@
                 </footer>
             </blockquote>
         </div>
+        
     </div>
 </template>
 

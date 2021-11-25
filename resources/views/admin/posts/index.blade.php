@@ -8,6 +8,7 @@
             <a href="{{route("admin.posts.create")}}">Create a new post</a>
         </header>
 
+        {{-- message sent on delete --}}
         @if (session("alert-message"))
             <div class="alert alert-warning">
                 {{session('alert-message')}}
@@ -15,6 +16,7 @@
         @endif
 
         <table class="table table-bordered">
+
             <thead>
                 <th class="col">Title</th>
                 <th class="col">Category</th>
@@ -22,22 +24,36 @@
                 <th class="col">Author</th>
                 <th class="col">Date</th>
             </thead>
+
             <tbody>
+
                 @forelse ($posts as $post)
                     <tr>
+                        {{-- tile column with route when clicked --}}
                         <td><a href="{{ route('admin.posts.show', $post->id ) }}">{{ $post->title }}</a></td>
+                        
+                        {{-- category column --}}
                         <td>@if ($post->category) {{ ucfirst($post->category->name) }} @else none @endif</td>
+                        
+                        {{-- tags column (more than one tag is choosable) --}}
                         <td>
                             @forelse ($post->tags as $tag)
-                            
                                 <span class="bagde badge-pill" style="background-color: {{ $tag->color}}; color: white">{{ ucfirst($tag->name) }}</span>
                             @empty
                                 No Tags
                             @endforelse
                         </td>
+
+                        {{-- user name column with link to user --}}
                         <td>{{ ucfirst($post->user->name) }}</td>
+
+                        {{-- date column --}}
                         <td>{{ $post->date }}</td>
+
+                        {{-- edit button with route to edit blade --}}
                         <td><a href="{{ route('admin.posts.edit', $post ) }}" class="btn btn-primary">Edit</a></td>
+                        
+                        {{-- delete form with button --}}
                         <td>
                             <form class="delete-item" action="{{route('admin.posts.destroy', $post->id )}}" method="POST" data-post-title="{{ $post->title }}">
                                 @csrf
@@ -45,14 +61,15 @@
 
                                 <button class="btn btn-primary" type="submit">Delete</button>
                             </form>
-                            
                         </td>
                     </tr>
+
                 @empty
                     <tr>
-                        <td colspan="3">There are no posts</td>
+                        <td colspan="3">There are no posts.</td>
                     </tr>
                 @endforelse
+
             </tbody>
         </table>
         

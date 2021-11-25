@@ -32,8 +32,10 @@ export default {
         }
     },
     methods: {
+        
         getPostList(){
-            this.isLoading = true;
+
+            this.isLoading = true; // loadind function activated while loading the posts
 
             axios.get(`${this.baseUri}/api/posts/`)
             .then((response)=>{
@@ -45,8 +47,7 @@ export default {
                 console.error(error);
             })
             .then(()=>{
-                // eseguo sempre indipendemente dall'andamento della chiamata axios
-                this.isLoading = false;
+                this.isLoading = false; // loading function is stopped when posts are loaded
             });
         }
     },
