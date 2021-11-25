@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Post;
 use App\Models\Category;
@@ -22,7 +23,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('date','desc')->get();
         return view ('admin.posts.index', compact('posts'));
     }
 
@@ -51,17 +52,20 @@ class PostController extends Controller
 
             'title' => 'required|string|unique:posts|max:120',
             'content' => 'required|string|min:40',
-            'category_id' => 'nullable|exists:category_id, id',
+            'category_id' => 'nullable|exists:categories,id',
+            'image' => 'image',
         ],
         [
-            "required" => 'You have to correctly file all the parameters.',
-            "title.required" => 'Please insert a title.',
+            'required' => 'You have to correctly file all the parameters.',
+            'title.required' => 'Please insert a title.',
             'content.min' => 'The content of the post has to be at least 40 letters long.'
         ]);
 
         $data = $request->all();
         $data['date'] = Carbon::now();
         $data['user_id'] = Auth::user()->id;
+
+        $data['image'] = Storage::put('posts/images', $data['image']);
 
         $post = new Post();
         $post->fill($data);

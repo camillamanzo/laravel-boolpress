@@ -17,14 +17,8 @@
                     </ul>
                 </div>        
             @endif
-            <form action="{{route('admin.posts.store')}}" method="POST" >
+            <form action="{{route('admin.posts.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-
-                <div class="form-group">
-                    <label for="title">Title:</label>
-                    <input class="form-control form-control-lg" type="text" 
-                    placeholder="Insert the title of the post" id="title" name="title" value="{{ old('title', $post->title) }}">
-                </div>
 
                 <div class="form-group">
                     <label for="category_id">Categories:</label>
@@ -38,7 +32,8 @@
                 </div>
 
                 <div class="form-group">
-                    <legend class="h5">Tags</legend>
+                    <label>Tags:</label>
+                    <br>
                     <div class="form-check form-check-inline">
                         @foreach ($tags as $tag)
                         <div class="mr-3">
@@ -48,6 +43,21 @@
                         @endforeach
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input class="form-control form-control-lg" type="text" 
+                    placeholder="Insert the title of the post" id="title" name="title" value="{{ old('title', $post->title) }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Image:</label>
+                    <div class="custom-file">
+                        <input type="file" class="form-control" id="image" name="image" for="image" value="{{ old('image', $post->image) }}">
+                        <label class="custom-file-label" for="image" name="image">Choose file...</label>
+                    </div>
+                </div>
+                
 
                 <div class="form-group">
                     <label for="content">Content:</label>
