@@ -14,6 +14,7 @@ class Post extends Model
         return Carbon::create($this->$column)->format($format);
     }
 
+    // if image stats with post/ images, return it to the storage
     public function getImagePrefix(){
         if (str_starts_with ($this->image, "posts/images") ){
             return asset('storage/') . '/';

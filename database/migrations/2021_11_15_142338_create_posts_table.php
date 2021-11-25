@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->date('date');
             $table->timestamps();
 
+            // adding foreign key referencing to the ids in table users
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -34,6 +35,7 @@ class CreatePostsTable extends Migration
     public function down()
     {
         Schema::table('posts',  function (Blueprint $table) {
+
             $table->dropForeign('posts_user_id_foreign');
         });
         

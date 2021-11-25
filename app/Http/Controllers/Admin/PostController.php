@@ -23,6 +23,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        // getting all posts from the model and ordering them by date.
         $posts = Post::orderBy('date','desc')->get();
         return view ('admin.posts.index', compact('posts'));
     }
@@ -37,6 +38,8 @@ class PostController extends Controller
         $post = new Post();
         $categories = Category::all();
         $tags = Tag::all();
+        
+        // compact used to create an array with the values in the brackets
         return view('admin.posts.create', compact('post', 'categories', 'tags'));
     }
 
@@ -48,6 +51,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // making validation to inform users of the error response
         $request->validate([
 
             'title' => 'required|string|unique:posts|max:120',
@@ -62,15 +66,19 @@ class PostController extends Controller
         ]);
 
         $data = $request->all();
-        $data['date'] = Carbon::now();
-        $data['user_id'] = Auth::user()->id;
 
+        // carbon::now uses places today's date in 'date'
+        $data['date'] = Carbon::now();
+        // auth::user makes the authentication of the user based on the id (in this case)
+        $data['user_id'] = Auth::user()->id;
+        // Storage facade provides a convenient way to perform actions on the storage disks.
         $data['image'] = Storage::put('posts/images', $data['image']);
 
         $post = new Post();
         $post->fill($data);
         $post->save();
 
+        // if tags are already in the data, sync the tags(place the new ones only if they're not already in array)
         if(array_key_exists('tags', $data)) $post->tags()->sync($data['tags']);
 
         return redirect()->route('admin.posts.show', compact('post'));
@@ -98,6 +106,7 @@ class PostController extends Controller
         $categories = Category::all();
         $tags = Tag::all();
 
+        // pluck method gets all of the values for -id-, toArray method makes an array with the given values
         $tagIds = $post->tags->pluck('id')->toArray();
         return view("admin.posts.edit", compact('post', 'categories', 'tags', 'tagIds'));
     }
@@ -136,6 +145,7 @@ class PostController extends Controller
         $data = $request->all();
         $post->delete();
 
+        // ->with echoes the message when called (first value is the name)
         return redirect()->route('admin.posts.index', $post)
             ->with('alert-message', "' $post->title ' has been deleted");
     }

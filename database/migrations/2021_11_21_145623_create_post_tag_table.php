@@ -20,7 +20,7 @@ class CreatePostTagTable extends Migration
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('tag_id');
             
-            
+            // cascade drops the whole row if one element of the two is deleted. (only used in many to many relations)
             $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });

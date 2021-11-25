@@ -15,6 +15,7 @@ class AddForeignCategoryIdOnPostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
 
+            // adding foreign key column to posts table by solo migration
             $table->unsignedBigInteger('category_id')->after('id')->nullable();
 
             $table->foreign('category_id')

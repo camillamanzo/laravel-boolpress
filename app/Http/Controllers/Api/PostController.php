@@ -17,6 +17,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
+        // gets the respons and makes the json into array
         return response()->json(compact('posts'));
     }
 
@@ -40,6 +41,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         if ( $post ) return response()->json($post);
+        
+        // if $post doesn't exist takes user to 404 page
         else return response('', 404);
     }
 
