@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container p-5">
+    <div class="container px-5">
 
         <header class="py-3">
             <h1>Published posts</h1>
@@ -51,14 +51,14 @@
                         <td>{{ $post->date }}</td>
 
                         {{-- edit button with route to edit blade --}}
-                        <td><a href="{{ route('admin.posts.edit', $post ) }}" class="btn btn-primary">Edit</a></td>
+                        <td><a href="{{ route('admin.posts.edit', $post ) }}"><button class="btn-sm btn-primary">Edit</button></a></td>
                         
                         {{-- delete form with button --}}
                         <td>
                             <form class="delete-item" action="{{route('admin.posts.destroy', $post->id )}}" method="POST" data-post-title="{{ $post->title }}">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-primary" type="submit">Delete</button>
+                                <button class="btn-sm btn-primary" type="submit">Delete</button>
                             </form>
                         </td>
                     </tr>

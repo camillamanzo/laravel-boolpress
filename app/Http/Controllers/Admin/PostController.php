@@ -24,7 +24,7 @@ class PostController extends Controller
     public function index()
     {
         // getting all posts from the model and ordering them by date.
-        $posts = Post::orderBy('date','desc')->simplePaginate(8);
+        $posts = Post::orderBy('date','desc')->simplePaginate(6);
         return view ('admin.posts.index', compact('posts'));
     }
 
@@ -57,7 +57,7 @@ class PostController extends Controller
             'title' => 'required|string|unique:posts|max:120',
             'content' => 'required|string|min:40',
             'category_id' => 'nullable|exists:categories,id',
-            'image' => 'image',
+            'image' => 'nullable|image',
         ],
         [
             'required' => 'You have to correctly file all the parameters.',
