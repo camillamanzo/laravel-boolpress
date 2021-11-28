@@ -8,17 +8,11 @@
         </header>
 
         <section id="post-form">
-            <form action="{{route('admin.posts.update', $post)}}" method="POST">
+            <form action="{{route('admin.posts.update', $post)}}" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                {{-- adding patch method to add to post and update data --}}
+                {{-- adding PATCH method to add to POST and update data --}}
                 @method('PATCH')
-
-                {{-- title section --}}
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input class="form-control form-control-lg" type="text" id="title" name="title" value="{{ $post->title }}" required>
-                </div>
 
                 {{-- categories section --}}
                 <div class="form-group">
@@ -47,6 +41,23 @@
                     </div>
                 </div>
 
+                {{-- image section --}}
+                <div class="form-group">
+
+                    <label for="image">Image:</label>
+                    <div class="custom-file">
+                        <input type="file" class="form-control" id="image" name="image" for="image" value="{{ old('image', $post->image) }}">
+                        <label class="custom-file-label" for="image" name="image">Choose file...</label>
+                    </div>
+
+                </div>
+
+                {{-- title section --}}
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input class="form-control form-control-lg" type="text" id="title" name="title" value="{{ $post->title }}" required>
+                </div>
+
                 {{-- content section --}}
                 <div class="form-group">
                     <label for="post_content">Content</label>
@@ -54,8 +65,8 @@
                 </div>
                 
                 <div class="pt-5 d-flex justify-content-between">
-                    <button type="submit" class="btn btn-primary px-5">Submit</button>
                     <button type="reset" class="btn btn-danger px-5">Delete</button>
+                    <button type="submit" class="btn btn-primary px-5">Submit</button>
                 </div>
                 
             </form>

@@ -1919,6 +1919,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1969,6 +1971,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -2037,15 +2042,15 @@ __webpack_require__.r(__webpack_exports__);
     getPostList: function getPostList() {
       var _this = this;
 
-      this.isLoading = true;
+      this.isLoading = true; // loadind function activated while loading the posts
+
       axios.get("".concat(this.baseUri, "/api/posts/")).then(function (response) {
         console.log(response.data);
         _this.posts = response.data.posts;
       })["catch"](function (error) {
         console.error(error);
       }).then(function () {
-        // eseguo sempre indipendemente dall'andamento della chiamata axios
-        _this.isLoading = false;
+        _this.isLoading = false; // loading function is stopped when posts are loaded
       });
     }
   },

@@ -15,18 +15,17 @@
             <div class="card-body d-flex">
 
                 {{-- image div --}}
-                <div class="col-4">
+                <div class="col-4 align-self-center">
                     {{-- using the function -getImagePrefix- and concatenating it to post image --}}
                     <img class="img-fluid" style="width:300px" src="{{ $post->getImagePrefix() . $post->image }}" alt="Post image">
                 </div>
 
                 {{-- post info div --}}
-                <div class="col-7">
+                <div class="col-8">
 
                     {{-- tags div --}}
                     <div class="pb-3">
                         @forelse ($post->tags as $tag)
-                                    
                             <span class="bagde badge-pill" style="background-color: {{ $tag->color}}; color: white ">{{$tag->name}}</span>
                         @empty
                             No Tags
@@ -51,6 +50,16 @@
                     </blockquote>
 
                 </div>
+            </div>
+
+            <div class="d-flex justify-content-between p-5">
+                <form class="delete-item" action="{{route('admin.posts.destroy', $post->id )}}" method="POST" data-post-title="{{ $post->title }}">
+                    @csrf
+                    @method('DELETE')
+        
+                    <button class="btn btn-danger px-5" type="submit">Delete</button>
+                </form>
+                <a href="{{ route('admin.posts.edit', $post ) }}" class="btn btn-primary px-5">Edit</a>
             </div>
         </div>
 

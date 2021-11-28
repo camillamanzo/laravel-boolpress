@@ -58,7 +58,6 @@
                             <form class="delete-item" action="{{route('admin.posts.destroy', $post->id )}}" method="POST" data-post-title="{{ $post->title }}">
                                 @csrf
                                 @method('DELETE')
-
                                 <button class="btn btn-primary" type="submit">Delete</button>
                             </form>
                         </td>

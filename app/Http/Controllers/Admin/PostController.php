@@ -121,8 +121,10 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $data = $request->all();
+        
         $data['date'] = Carbon::now();
         $data['user_id'] = Auth::user()->id;
+        $data['image'] = Storage::put('posts/images', $data['image']);
 
         $post->fill($data);
         $post->update();
