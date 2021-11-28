@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card p-5">
             <div class="card-header">
-                <h1>Contattaci</h1>
+                <h1 class="text-uppercase">Contact us!</h1>
             </div>
             <div class="card-body">
                 @if ($errors->any())
@@ -17,22 +17,22 @@
                 </div>        
                 @endif
 
-                <form action="{{route('guests.contacts.send')}}" method="POST">
+                <form action="{{route('guests.contact.send')}}" method="POST">
                     @csrf
 
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="email" class="form-control" id="name" placeholder="Insert your name">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Insert your name" value="{{ old('name') }}">
                     </div>
 
                     <div class="form-group">
                         <label for="email_address">Email address</label>
-                        <input type="email" class="form-control" id="email_address" placeholder="Insert your email address">
+                        <input type="email" class="form-control" name="email_address" id="email_address" placeholder="Insert your email address" value="{{ old('email_address') }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Message</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" name="message" placeholder="Insert your message" value="{{ old('message') }}"></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Send</button>
@@ -44,7 +44,3 @@
         </div>
     </div>
 @endsection
-
-
-
-
