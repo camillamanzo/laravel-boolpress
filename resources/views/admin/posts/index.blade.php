@@ -72,6 +72,9 @@
             </tbody>
         </table>
         
+        <footer class="footer p-3 mx-2 d-flex justify-content-md-center">
+            {{ $posts->links() }}
+        </footer>
 
     </div>
 @endsection

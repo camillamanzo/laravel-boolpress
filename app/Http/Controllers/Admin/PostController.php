@@ -24,7 +24,7 @@ class PostController extends Controller
     public function index()
     {
         // getting all posts from the model and ordering them by date.
-        $posts = Post::orderBy('date','desc')->get();
+        $posts = Post::orderBy('date','desc')->simplePaginate(8);
         return view ('admin.posts.index', compact('posts'));
     }
 
